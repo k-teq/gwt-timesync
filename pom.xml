@@ -1,0 +1,149 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.kteq.gwt</groupId>
+  <artifactId>gwt-timesync</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <properties>
+        <gwt.version>2.8.2</gwt.version>
+        <gwt.maven.version>2.8.2</gwt.maven.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jsinterop.base.version>1.0.0-RC1</jsinterop.base.version>
+        <elemental2.version>1.0.0-RC1</elemental2.version>
+    </properties>
+
+
+    <dependencies>
+        <!-- GWT -->
+        <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-user</artifactId>
+            <version>${gwt.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+
+        <!-- https://mvnrepository.com/artifact/com.google.jsinterop/base -->
+        <dependency>
+            <groupId>com.google.jsinterop</groupId>
+            <artifactId>base</artifactId>
+            <version>${jsinterop.base.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.google.elemental2/elemental2-core -->
+        <dependency>
+            <groupId>com.google.elemental2</groupId>
+            <artifactId>elemental2-core</artifactId>
+            <version>${elemental2.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.google.elemental2/elemental2-core -->
+        <dependency>
+            <groupId>com.google.elemental2</groupId>
+            <artifactId>elemental2-dom</artifactId>
+            <version>${elemental2.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.google.elemental2/elemental2-core -->
+        <dependency>
+            <groupId>com.google.elemental2</groupId>
+            <artifactId>elemental2-promise</artifactId>
+            <version>${elemental2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-server</artifactId>
+            <version>9.2.14.v20151106</version>
+        </dependency>
+
+    </dependencies>
+
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <!--<outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>-->
+
+        <sourceDirectory>src/main/java</sourceDirectory>
+
+        <resources>
+          <resource>
+            <directory>src/main/java</directory>
+              <includes>
+                  <include>**/*.java</include>
+                  <include>**/*.gwt.xml</include>
+              </includes>         </resource>
+          <resource>
+            <directory>src/main/resources</directory>
+              <includes>
+                  <include>**/*.js</include>
+                  <include>**/*.css</include>
+              </includes>
+          </resource>
+        </resources>
+
+        <plugins>
+          <plugin>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.5.1</version>
+            <configuration>
+              <source>1.8</source>
+              <target>1.8</target>
+            </configuration>
+          </plugin>
+
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>1.10</version>
+                <executions>
+                    <execution>
+                        <id>add-source</id>
+                        <!--<phase>prepare-package</phase>-->
+                        <!--<phase>process-classes</phase>-->
+                        <!--<phase>generate-sources</phase>-->
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>${project.build.directory}/node_modules/timesync/dist</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+        <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>gwt-maven-plugin</artifactId>
+            <version>${gwt.maven.version}</version>
+            <executions>
+                <execution>
+                    <phase>site</phase>
+                    <goals>
+                        <goal>compile</goal>
+                    </goals>
+                </execution>
+            </executions>
+            <configuration>
+                <logLevel>WARN</logLevel>
+                <strict>true</strict>
+                <noServer>false</noServer>
+                <!--<generateDirectory>${project.build.directory}/generated-sources/annotations</generateDirectory>-->
+
+                <hostedWebapp>src/main/webapp</hostedWebapp>
+                <runTarget>/</runTarget>
+                <extraJvmArgs>-Xmx2048m -XX:CompileThreshold=700</extraJvmArgs>
+                <strict>true</strict>
+                <module>com.kteq.gwt.timesync.Gwt-timesync-sample</module>
+
+                <bindAddress>0.0.0.0</bindAddress>
+            </configuration>
+
+        </plugin>
+
+    </plugins>
+  </build>
+</project>
