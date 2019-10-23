@@ -1,7 +1,6 @@
 package com.kteq.gwt.timesync.client.sample;
 
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.core.client.JsDate;
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HTML;
@@ -10,9 +9,7 @@ import com.kteq.gwt.timesync.client.Console;
 import com.kteq.gwt.timesync.client.Timesync;
 import com.kteq.gwt.timesync.client.TimesyncUtils;
 import com.kteq.gwt.timesync.client.jsi.TimesyncOptions;
-
-
-import elemental2.dom.EventSource;
+import elemental2.core.JsDate;
 
 
 public class Sample implements EntryPoint {
@@ -56,7 +53,7 @@ public class Sample implements EntryPoint {
 //
 //
         //the managed way
-        RootPanel.get().add(new HTML("starting Syncronization: " + JsDate.create( JsDate.now())));
+        RootPanel.get().add(new HTML("starting Syncronization: " + new JsDate( JsDate.now())));
 
 
         Window.alert("cxxxx" + Timesync.i());
@@ -65,13 +62,13 @@ public class Sample implements EntryPoint {
                 new TimesyncOptions().setServer("timesync").setInterval(1000000),
                 (ts) -> {
 
-                    RootPanel.get().add(new HTML("we're in sync at :" + JsDate.create( JsDate.now())));
-                    RootPanel.get().add(new HTML("server time is :" + JsDate.create( ts.now().valueOf() )));
+                    RootPanel.get().add(new HTML("we're in sync at :" + new JsDate( JsDate.now())));
+                    RootPanel.get().add(new HTML("server time is :" + new JsDate( ts.now().valueOf() )));
 
                     Scheduler.get().scheduleFixedDelay(
                             () -> {
-                                String a = "now SERVER: " + JsDate.create(ts.now().valueOf()) + " OFFSET: " + ts.getOffset();
-                                String b = "now CLIENT " + JsDate.create(JsDate.now());
+                                String a = "now SERVER: " + new JsDate(ts.now().valueOf()) + " OFFSET: " + ts.getOffset();
+                                String b = "now CLIENT " + new JsDate(JsDate.now());
                                 RootPanel.get().add(new HTML(a));
                                 RootPanel.get().add(new HTML(b));
 
@@ -79,19 +76,15 @@ public class Sample implements EntryPoint {
                             }, 10000
                     );
 
+
                     //questo funziona (fa qualcosa) solo perche' il server e'
                     //fatto in modo da ritornare esattamente 10 minuti avanti
-                    int ed = ts.scheduleAt( JsDate.create( JsDate.now() + 11*60*1000 ),
+                    int ed = ts.scheduleAt( new elemental2.core.JsDate( JsDate.now() + 11*60*1000 ),
                             (tss) -> Window.alert("Eccomi"));
 
                     Console.log("ed: " + ed);
                 }
         );
-
-
-        EventSource eventSource = new EventSource("/sse");
-        eventSource.addEventListener("message",
-                (e) -> Console.log("got", e));
 
 
     }

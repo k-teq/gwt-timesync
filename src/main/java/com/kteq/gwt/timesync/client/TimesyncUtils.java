@@ -1,13 +1,10 @@
 package com.kteq.gwt.timesync.client;
 
-import com.google.gwt.core.client.JsDate;
 import com.google.gwt.core.client.ScriptInjector;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.TextResource;
-import com.google.gwt.user.client.Window;
-import com.kteq.gwt.timesync.client.jsi.*;
-
+import com.kteq.gwt.timesync.client.jsi.TimesyncOptions;
 import jsinterop.annotations.JsFunction;
 import jsinterop.annotations.JsMethod;
 

@@ -1,11 +1,11 @@
 package com.kteq.gwt.timesync.client;
 
-import com.google.gwt.core.client.JsDate;
 import com.google.gwt.core.client.Scheduler;
 import com.kteq.gwt.timesync.client.jsi.ChangeEventCallback;
 import com.kteq.gwt.timesync.client.jsi.ErrorEventCallback;
 import com.kteq.gwt.timesync.client.jsi.SyncEventCallback;
 import com.kteq.gwt.timesync.client.jsi.TimesyncOptions;
+import elemental2.core.JsDate;
 import elemental2.core.JsNumber;
 import jsinterop.annotations.*;
 
