@@ -1,8 +1,34 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.k-teq.gwt</groupId>
-  <artifactId>gwt-timesync</artifactId>
-    <version>0.0.3-SNAPSHOT</version>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.k-teq.gwt</groupId>
+    <artifactId>gwt-timesync</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>GWT timesync</name>
+    <url>https://github.com/k-teq/gwt-timesync</url>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+            <comments>A business-friendly OSS license</comments>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <id>ab.mancini</id>
+            <name>Alberto Mancini</name>
+            <email>alberto@k-teq.com</email>
+            <organization>K-Teq</organization>
+            <organizationUrl>http://www.k-teq.com</organizationUrl>
+            <roles>
+                <role>Project-Administrator</role>
+                <role>Developer</role>
+            </roles>
+            <timezone>+1</timezone>
+        </developer>
+    </developers>
+
 
     <properties>
         <gwt.version>2.8.2</gwt.version>
@@ -11,6 +37,7 @@
         <jsinterop.base.version>1.0.0-RC1</jsinterop.base.version>
         <elemental2.version>1.0.0-RC1</elemental2.version>
     </properties>
+
 
 
     <profiles>
@@ -103,11 +130,11 @@
         </dependency>
 
 
-<!--        <dependency>-->
-<!--            <groupId>org.eclipse.jetty</groupId>-->
-<!--            <artifactId>jetty-server</artifactId>-->
-<!--            <version>9.2.14.v20151106</version>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.eclipse.jetty</groupId>-->
+        <!--            <artifactId>jetty-server</artifactId>-->
+        <!--            <version>9.2.14.v20151106</version>-->
+        <!--        </dependency>-->
 
     </dependencies>
 
@@ -119,19 +146,20 @@
         <sourceDirectory>src/main/java</sourceDirectory>
 
         <resources>
-          <resource>
-            <directory>src/main/java</directory>
-              <includes>
-                  <include>**/*.java</include>
-                  <include>**/*.gwt.xml</include>
-              </includes>         </resource>
-          <resource>
-            <directory>src/main/resources</directory>
-              <includes>
-                  <include>**/*.js</include>
-                  <include>**/*.css</include>
-              </includes>
-          </resource>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.java</include>
+                    <include>**/*.gwt.xml</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.js</include>
+                    <include>**/*.css</include>
+                </includes>
+            </resource>
         </resources>
 
         <plugins>
@@ -150,7 +178,7 @@
                 </executions>
             </plugin>
 
-            
+
             <plugin>
                 <groupId>org.sonatype.plugins</groupId>
                 <artifactId>nexus-staging-maven-plugin</artifactId>
@@ -194,14 +222,14 @@
                     </execution>
                 </executions>
             </plugin>
-          <plugin>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.5.1</version>
-            <configuration>
-              <source>1.8</source>
-              <target>1.8</target>
-            </configuration>
-          </plugin>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
 
 
             <plugin>
@@ -227,37 +255,37 @@
                 </executions>
             </plugin>
 
-        <plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>gwt-maven-plugin</artifactId>
-            <version>${gwt.maven.version}</version>
-            <executions>
-                <execution>
-                    <phase>site</phase>
-                    <goals>
-                        <goal>compile</goal>
-                    </goals>
-                </execution>
-            </executions>
-            <configuration>
-                <logLevel>WARN</logLevel>
-                <strict>true</strict>
-                <noServer>false</noServer>
-                <!--<generateDirectory>${project.build.directory}/generated-sources/annotations</generateDirectory>-->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>gwt-maven-plugin</artifactId>
+                <version>${gwt.maven.version}</version>
+                <executions>
+                    <execution>
+                        <phase>site</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <logLevel>WARN</logLevel>
+                    <strict>true</strict>
+                    <noServer>false</noServer>
+                    <!--<generateDirectory>${project.build.directory}/generated-sources/annotations</generateDirectory>-->
 
-                <hostedWebapp>src/main/webapp</hostedWebapp>
-                <runTarget>/</runTarget>
-                <extraJvmArgs>-Xmx2048m -XX:CompileThreshold=700</extraJvmArgs>
-                <strict>true</strict>
-                <module>com.kteq.gwt.timesync.Gwt-timesync-sample</module>
+                    <hostedWebapp>src/main/webapp</hostedWebapp>
+                    <runTarget>/</runTarget>
+                    <extraJvmArgs>-Xmx2048m -XX:CompileThreshold=700</extraJvmArgs>
+                    <strict>true</strict>
+                    <module>com.kteq.gwt.timesync.Gwt-timesync-sample</module>
 
-                <bindAddress>0.0.0.0</bindAddress>
-            </configuration>
+                    <bindAddress>0.0.0.0</bindAddress>
+                </configuration>
 
-        </plugin>
+            </plugin>
 
-    </plugins>
-  </build>
+        </plugins>
+    </build>
 
 
 </project>
