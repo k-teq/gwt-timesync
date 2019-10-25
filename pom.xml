@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.k-teq.gwt</groupId>
   <artifactId>gwt-timesync</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.2</version>
 
     <properties>
         <gwt.version>2.8.2</gwt.version>
@@ -61,7 +61,7 @@
         <connection>scm:git:git@github.com:k-teq/gwt-timesync.git</connection>
         <developerConnection>scm:git:git@github.com:k-teq/gwt-timesync.git</developerConnection>
         <url>https://github.com/k-teq/gwt-timesync</url>
-        <tag>HEAD</tag>
+        <tag>gwt-timesync-0.0.2</tag>
     </scm>
 
     <dependencies>
