@@ -5,6 +5,7 @@
     <version>0.0.2-SNAPSHOT</version>
     <name>GWT timesync</name>
     <url>https://github.com/k-teq/gwt-timesync</url>
+    <description>GWT JSInterop wrapper around timesync</description>
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
